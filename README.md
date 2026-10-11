@@ -1,67 +1,95 @@
 # Septa
-### Scattered materials. One editable visual story.
+### Your materials. Your story. Still yours to edit.
 
-A creative workspace for turning references, documents and a brief into presentations and other visual narratives. Septa treats the output as a structured document that can be edited, inspected and exported, rather than as one flattened image.
+An AI presentation studio that brings source material, visual references, generation and native editing into one workspace. **Startup prototype · development paused since 11 October 2026 · implementation private.**
 
-![October interface prototype: slide navigation, an editable composition and art-direction controls share the studio.](studio.png)
+[Watch the 70-second overview](media/demo.mp4) · [Inspect the exported PDF](media/example.pdf) · [Download the editable PowerPoint](media/example.pptx) · [HTML export](media/example.html)
 
-*October interface prototype: slide navigation, an editable composition and art-direction controls share the studio.*
+![The selected cinematic landing page of the actual local prototype.](media/landing.png)
 
 ## Start with material, not an empty prompt
 
-A useful deck often begins with a mixture of research, links, screenshots, spreadsheets and unfinished notes. The difficult work is deciding what matters, preserving the facts and making those materials feel like one coherent story.
+A presentation rarely starts with finished copy. It starts with research, reference images, links, spreadsheets and half-formed notes. Septa lets the creator assign each input a role: **content and facts**, **visual reference**, or **both**. The narrative and visual direction can then be developed separately before they meet in the same slide.
 
-Septa’s workflow separates collection, art direction, outline, studio editing and export. That gives the creator places to make decisions before the final visual pass: which sources belong, what the narrative should say and which visual references should guide it.
+![Actual material intake with files, links, pasted text and explicit source roles.](media/media-intake.png)
 
-![The product entry point frames creation around the user’s materials and point of view.](home.png)
+Text and image intake were verified in the preserved local workflows. Parsers and adapters cover a broader range of documents, links and audio/video inputs, with coverage dependent on format and configured providers. The source record keeps page, cell or time references where extraction supports them.
 
-*The product entry point frames creation around the user’s materials and point of view.*
+## A document you can continue to shape
 
-## The document remains editable
+The studio stores text, shapes and images as editable objects. A user can change a title, move an element, adjust its properties and save the result. Scoped AI edits pass through document operations, keeping accepted work under the creator’s control. Undo, redo and reload were exercised in bounded verification journeys.
 
-The underlying studio represents slides as typed scenes: text, shapes, images, charts, groups and motion, with geometry and lock state. The editor, browser presentation and export paths work from that scene representation.
+![The saved 20-slide document in the native editor, with slide navigation, properties and export controls.](media/editor.png)
 
-This matters during revision. A headline can be changed without rebuilding the whole slide. A creator can lock a good image or layout region, move an element manually, undo an edit and then request a targeted AI proposal for a selection. The user’s accepted work should remain stable while another part changes.
+The preserved implementation combines the cinematic frontend with a Fastify/SQLite backend. Durable jobs, checkpoints and provider-attempt records allow interrupted work to continue. The tested AI configuration used **OpenAI and Google Vertex AI**. The example deck’s title mentions Claude Code as its subject; that is not a claim that Septa used the Claude API.
 
-![Presentation mode in the October design prototype. The sample is authored demonstration content, not a claimed benchmark of autonomous generation.](presentation.png)
-
-*Presentation mode in the October design prototype. The sample is authored demonstration content, not a claimed benchmark of autonomous generation.*
-
-## From references to art direction
-
-Reference handling is more specific than choosing “modern” or “minimal.” The generation workflow can describe typography, spacing, rhythm, material, lighting, image crop and other visual relationships in a reference packet. Those decisions then inform a plan for the actual content.
-
-The material pipeline is designed for text, web pages, PDFs, Office documents, spreadsheets, images and audio/video inputs. Extracted content keeps source anchors such as passages, cells and timestamps, so the generation stage can work with evidence instead of receiving an undifferentiated text blob.
-
-## A staged generation system
-
-~~~mermaid
+```mermaid
 flowchart LR
- A[Brief and source materials] --> B[Extracted evidence]
- B --> C[Outline and reference packet]
- C --> D[Typed scene generation]
- D --> E[Render and inspect]
- E --> F[Bounded repair]
- F --> G[Editable studio]
- G --> H[Browser / PDF / PPTX]
-~~~
+ A[Brief and factual sources] --> C[Evidence and narrative]
+ B[Independent visual references] --> D[Visual direction]
+ C --> E[Generation and composition]
+ D --> E
+ E --> F[Editable document]
+ F --> G[Manual and scoped AI edits]
+ G --> H[PDF / PPTX / HTML]
+```
 
-The implementation uses staged jobs and checkpoints so a long generation does not have to restart from the first prompt after a later failure. Provider attempts and credit reservations are recorded, while render inspection and bounded repair give layout errors a defined correction path. SQLite in WAL mode supplies local durable state.
+## Follow a preserved workflow
 
-Provider adapters cover multiple model families and image generation backends. The application-level contract is the useful part: a provider supplies an operation within the pipeline, while the scene model and project state remain under the studio’s control.
+[![Nine-second preview of actual material intake, editing and a scoped AI change.](media/demo-preview.gif)](media/demo.mp4)
 
-## What the current material shows
+The full **70-second, silent overview** is assembled from actual application screenshots and exported slides. It is a screenshot-based demonstration with waiting time omitted. Its scoped AI-edit scene comes from a separate, fictional two-slide test; the larger presentation is the recovered 20-slide run.
 
-The gallery presents the October 2026 interface/design prototype with authored sample content. The engineering description reflects the restored studio implementation: source ingestion, typed scenes, manual editing, staged generation and export. These are related development tracks, and the sample screens should not be mistaken for evidence that every provider, input format and export has the same level of completion.
+<details>
+<summary>Inspect the larger generation and the separate AI-edit test</summary>
 
-The current architecture is a single-process, single-workspace system. Distributed collaboration, tenant isolation and a full commercial billing service are not established by this showcase. The core result is a practical document model and editing workflow that lets generated material become something a person can continue to shape.
+![Actual large-deck intake: 32 inputs and 20 requested slides.](media/materials.png)
+
+![Generated-artwork progress from the recovered larger job.](media/generation.png)
+
+![A selected-title edit in the separate two-slide Paper Garden verification scenario.](media/ai-edit.png)
+
+</details>
+
+## Inspect the result, not just the interface
+
+The same recovered presentation is available as [PDF](media/example.pdf), [editable PPTX](media/example.pptx) and [self-contained HTML](media/example.html). Its 20-slide overview is shown below. These are actual exports retained from the application.
+
+![All twenty exported PDF pages, in order.](media/slides-overview.jpg)
+
+<details>
+<summary>View four exported pages at a readable size</summary>
+
+![Exported page 1.](media/slide-01.png)
+
+![Exported page 5.](media/slide-05.png)
+
+![Exported page 9.](media/slide-09.png)
+
+![Exported page 20.](media/slide-20.png)
+
+</details>
+
+## What worked, and where the project stopped
+
+| Area | Preserved result |
+|---|---|
+| Intake | Actual text/image uploads, source roles and linked material |
+| Generation | Connected provider calls; a bounded two-slide journey and a recovered 20-slide run |
+| Editing | Native objects, scoped title changes, exact Undo restoration, saved state and notes |
+| Recovery | Continuation of the larger job from durable checkpoints |
+| Export | PDF, editable PPTX and portable HTML of the same recovered document |
+
+The larger run exposed slow generation, incomplete source coverage and unresolved automated review issues. It produced four new illustrations after recovery, but did not establish release quality. Hosted authentication, payments, multi-user collaboration and production operation remained unfinished.
+
+Development was paused because of implementation challenges and limited resources. The useful engineering result is the connected path from mixed source material to an editable, recoverable and exportable document. This showcase preserves that result and the limits found while building it.
+
+[Media provenance](docs/MEDIA.md) · [File checksums](docs/media-manifest.json)
 
 ---
 
 ### Built by
 
-[Shakhnazar Akhmer](https://github.com/Eye172).
+[Shakhnazar Akhmer / Eye172](https://github.com/Eye172).
 
-[More projects](https://github.com/Eye172) · [Contact](mailto:shakh090909@gmail.com)
-
-This repository presents the product and its engineering. The implementation is maintained separately. Screenshots and documented experiments are identified in their captions; a live deployment is not required to explore the case study.
+The implementation remains private. This public repository contains the product story, original demonstration media and exported examples.

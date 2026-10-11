@@ -1,0 +1,70 @@
+[
+  {
+    "path": "media/landing.png",
+    "sha256": "7dd84a25cc88631d4e9d859adfcfe09bb7f4f44de61c8bace2350e3d8238ee00"
+  },
+  {
+    "path": "media/media-intake.png",
+    "sha256": "a02990cbcc78a0285431dd2797dadff2392c92d4330a82fd60ac6118ab528fc9"
+  },
+  {
+    "path": "media/materials.png",
+    "sha256": "ecfc9d0f23aa33757bd07f13e582259e25a77b199557993923316cafd4d14b16"
+  },
+  {
+    "path": "media/generation.png",
+    "sha256": "1e7b60550618c316e275d7825b87181856ec2fa67015bc72fd4f3e1b5f5f2167"
+  },
+  {
+    "path": "media/editor.png",
+    "sha256": "72fa8ce70c50099b0ade649109b29bd6a817ab67fd3179b36fc91085fe78fdf4"
+  },
+  {
+    "path": "media/editor-final-slide.png",
+    "sha256": "b4f52362400aecb4764fb4a64c4701fd3be6e6af39897230e05fe5a41c3e9364"
+  },
+  {
+    "path": "media/ai-edit.png",
+    "sha256": "6709fb804b8583e2345852fa04bc31c6a42fb4f9cc23059dac9af47715ffa645"
+  },
+  {
+    "path": "media/example.pdf",
+    "sha256": "5b711ba6844885e47b38ebad3c198fb27812f418ef1fe955cf95e90d0a72aeb7"
+  },
+  {
+    "path": "media/example.pptx",
+    "sha256": "c6d97ff0afc04ba92050d50a7cd23023fda53b710d6236c029f9276d69b8b4ea"
+  },
+  {
+    "path": "media/example.html",
+    "sha256": "93f41791f56459e1a403f1922749d5e573e58e6dd806c206ff631834bb7d3054"
+  },
+  {
+    "path": "media/slides-overview.jpg",
+    "sha256": "26f87186c6296733a610d7de4e261c0dd10e2945a646ac1643cb7ed1b9585d47"
+  },
+  {
+    "path": "media/slide-01.png",
+    "sha256": "3cafc437a04564b17efec860c66b799254e1624d150ae50a89740d566d726d7d"
+  },
+  {
+    "path": "media/slide-05.png",
+    "sha256": "7161c092ab8360e4dad96d61465520be1a82162e143955d776283b26dd39516b"
+  },
+  {
+    "path": "media/slide-09.png",
+    "sha256": "f082ee4fe716471f0679e0919be081445668ae8509e60b0740b779b7625b3005"
+  },
+  {
+    "path": "media/slide-20.png",
+    "sha256": "d057949e2ea28dd5ae4db076658d7d38edcf9b66c2bc84523d14dbc987a14f3d"
+  },
+  {
+    "path": "media/demo-preview.gif",
+    "sha256": "dac079f5b1ff5cff882fda708dbacc4b2add107576a2595d6315427549df298b"
+  },
+  {
+    "path": "media/demo.mp4",
+    "sha256": "b6702235dd9ea5580dfb49f9498e313cb44c94437fcea4a5d686e9121903cf1e"
+  }
+]
